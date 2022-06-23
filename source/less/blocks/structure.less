@@ -1,0 +1,104 @@
+.structure__department{
+  display: block;
+}
+
+.structure__edit {
+  position: relative;
+  display: inline-block;
+}
+
+.structure__previous{
+  display: block;
+  background-color: rgba(1, 1, 1, 0.2);
+}
+
+.structure__edit .structure__edit-options {
+  transition: all 0.6s;
+  position: absolute;
+  left: 0;
+  top: 20px;
+  padding: 1px 0;
+  width:max-content;
+  transform: scale(0);
+  font-size: 10px;
+  line-height: 15px;
+  }
+
+  .structure__edit:hover .structure__edit-options{
+    transform: scale(1);
+  }
+
+.structure__edit-options {
+  margin-bottom: 5px;
+  background-color: @white;
+  z-index: 1;
+  border: 1px solid rgba(1, 1, 1, 0.2);
+  border-bottom: 3px solid rgba(1, 1, 1, 0.3);
+}
+
+.structure__department-list,
+.department__head-employee-block,
+.department__employee-block,
+.structure__add-employee {
+  display: inline-block;
+}
+
+ol {
+  list-style: none;
+	counter-reset: item;
+  margin:0;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+	position: relative;
+}
+
+li::before{
+  display: inline-block;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  color: #000;
+  text-align: center;
+  line-height: 21px;
+  font-size: 14px;
+}
+
+ol > li {
+	counter-increment: item;
+}
+
+ol > li::before {
+	content: counters(item, ".") ".";
+}
+
+/* 2-й уровень */
+ol ol {
+  margin-left: 100px;
+	counter-reset: item2;
+}
+ol ol > li {
+	counter-increment: item2;
+}
+ol ol > li::before {
+	content: counters(item, ".") "." counters(item2, ".") ".";
+}
+
+/* 3-й уровень */
+ol ol ol {
+  margin-left: 50px;
+  counter-reset: item3;
+}
+ol ol ol > li {
+	counter-increment: item3;
+}
+ol ol ol > li::before {
+	content: counters(item, ".") "." counters(item2, ".") "." counters(item3, ".") ".";
+}
+

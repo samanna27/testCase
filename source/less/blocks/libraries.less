@@ -1,0 +1,52 @@
+.libraries__list{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  min-width: 360px;
+}
+
+.libraries__item {
+  display: grid;
+  grid-template-areas:
+    "name link"
+    "type link";
+  margin: 16px 14px 0 0;
+  border-left: 1px solid rgba(1, 1, 1, 0.2);
+  border-right: 1px solid rgba(1, 1, 1, 0.2);
+  border-bottom: 3px solid rgba(1, 1, 1, 0.2);
+  padding: 14px;
+}
+
+.libraries__item-name{
+  grid-area: name;
+}
+
+.libraries__item-type{
+  grid-area: type;
+}
+
+.libraries__item-link{
+  grid-area: link;
+  padding-top: 14px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.libraries__more{
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: 0;
+  color: @blue;
+}
+
+@media (min-width: @tablet-width) {
+  .libraries__list{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+}

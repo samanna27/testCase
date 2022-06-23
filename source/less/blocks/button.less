@@ -1,0 +1,62 @@
+.button {
+  display: inline-block;
+  min-width: 75px;
+  color: @white;
+  background-color: rgba(1, 1, 1, 0.2);
+  border: none;
+  margin-left: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+.button--active {
+  background-color: #b31e1e;
+}
+
+.button-cross {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+
+  color: #585757;
+  border: none;
+  background-color: transparent;
+
+  cursor: pointer;
+  transition: outline-color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.button-cross:hover {
+  color: #c90606;
+}
+
+.button-cross:focus {
+  color: #c90606;
+  outline: none;
+}
+
+.button-cross__icon::before,
+.button-cross__icon::after {
+  top: 6.5px;
+  left: -1.5px;
+  position: absolute;
+
+  width: 17px;
+  height: 1px;
+
+  background-color: currentColor;
+
+  content: "";
+}
+
+.button-cross__icon::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.button-cross__icon::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
