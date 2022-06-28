@@ -1,4 +1,17 @@
-function Users():JSX.Element {
+import { ConnectedProps, connect } from 'react-redux';
+import { State } from '../../types/state';
+import { sortRecordsCodeDown } from '../../utils';
+
+const mapStateToProps = ({employeesList}: State) => ({
+  employeesList,
+});
+
+const connector = connect(mapStateToProps);
+
+type PropsFromRedux = ConnectedProps<typeof connector>;
+type ConnectedComponentProps = PropsFromRedux;
+
+function Users({employeesList}: ConnectedComponentProps):JSX.Element {
 
   return (
     <>
@@ -18,31 +31,33 @@ function Users():JSX.Element {
             </tr>
           </thead>
           <tbody>
-            <tr className="users__line">
-              <td className="users__line-cell">1</td>
-              <td className="users__line-cell">Петров Петр Петрович</td>
-              <td className="users__line-cell">ИТ</td>
-              <td className="users__line-cell">8 923 111 11 11</td>
-              <td className="users__line-cell">ngs@ngs.ru</td>
-              <td className="users__line-cell">Получен</td>
-              <td className="users__line-cell">
-                <a className="users__change-link" aria-label="Перемещение пользователя">
-                  <svg className="users__change-icon" width="12" height="12" aria-hidden="true">
-                    <use xlinkHref="#icon-change"></use>
-                  </svg>
-                </a>
-                <a className="users__edit-link" href="#" aria-label="Редактирование новости">
-                  <svg className="users__edit-icon" width="12" height="12" aria-hidden="true">
-                    <use xlinkHref="#icon-edit"></use>
-                  </svg>
-                </a>
-                <a className="users__delete-link" href="#" aria-label="Удаление новости">
-                  <svg className="users__delete-icon" width="12" height="12" aria-hidden="true">
-                    <use xlinkHref="#icon-delete"></use>
-                  </svg>
-                </a>
-              </td>
-            </tr>
+            {employeesList.slice().sort(sortRecordsCodeDown).map((item) => (
+              <tr key={item.id} className="users__line">
+                <td className="users__line-cell">{item.id}</td>
+                <td className="users__line-cell">{item.name}</td>
+                <td className="users__line-cell">{item.department}</td>
+                <td className="users__line-cell">{item.phone}</td>
+                <td className="users__line-cell">{item.email}</td>
+                <td className="users__line-cell">{item.password}</td>
+                <td className="users__line-cell">
+                  <a className="users__change-link" aria-label="Перемещение пользователя">
+                    <svg className="users__change-icon" width="12" height="12" aria-hidden="true">
+                      <use xlinkHref="#icon-change"></use>
+                    </svg>
+                  </a>
+                  <a className="users__edit-link" href="#" aria-label="Редактирование новости">
+                    <svg className="users__edit-icon" width="12" height="12" aria-hidden="true">
+                      <use xlinkHref="#icon-edit"></use>
+                    </svg>
+                  </a>
+                  <a className="users__delete-link" href="#" aria-label="Удаление новости">
+                    <svg className="users__delete-icon" width="12" height="12" aria-hidden="true">
+                      <use xlinkHref="#icon-delete"></use>
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </form>
@@ -84,4 +99,4 @@ function Users():JSX.Element {
   );
 }
 
-export default Users;
+export default connector(Users);
