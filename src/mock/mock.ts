@@ -88,13 +88,3 @@ export const DEPARTMENTS_LIST: DepartmentType = {
   'Департамент информатизации': [],
   'Департамент управления': [],
 };
-
-// {
-//   department1: {
-//     manager1: [1,2];
-//     manager2: [];
-//   },
-//   department2: {
-
-//   }
-// }

@@ -1,5 +1,4 @@
 import {
-  // ThunkAction,
   ThunkDispatch
 } from 'redux-thunk';
 import {
